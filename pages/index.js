@@ -9,7 +9,7 @@ import { fetchRecipes } from '../lib/api';
 
 export async function getStaticProps() {
   // Fetch recipes data with default search query
-  const recipesData = await fetchRecipes("chicken", "");
+  const recipesData = await fetchRecipes("", "");
 
   // Fetch blog posts data (existing code)
   const allPostsData = getSortedPostsData();

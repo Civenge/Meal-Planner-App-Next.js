@@ -5,7 +5,7 @@ import { fetchRecipes } from '../lib/api';
 export default function RecipePage() {
   useEffect(() => {
     async function fetchData() {
-      const formattedString = "chicken";
+      const formattedString = "";
       const excludedIngredientsStr = "";
 
       try {
