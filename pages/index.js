@@ -24,13 +24,14 @@ export async function getStaticProps() {
 
 export default function Home({ allPostsData }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [excludedQuery, setExcludedQuery] = useState("");
   const [searchedRecipes, setSearchedRecipes] = useState(null); // State to store search results
 
   const handleSearch = async (event) => {
     event.preventDefault();
 
     // Fetch recipes data with the user-entered search query
-    const recipesData = await fetchRecipes(searchQuery, "");
+    const recipesData = await fetchRecipes(searchQuery, excludedQuery);
 
     // Update the state with the new search results
     setSearchedRecipes(recipesData);
@@ -42,22 +43,35 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>Hi, here is my site!</p>
-        <p>Here you can search for new recipes!</p>
+        <p>Welcome to the Meal Planner App!</p>
+        <p>Here you can search for new recipes.</p>
 
         {/* Search Form */}
         <form onSubmit={handleSearch}>
           <label>
-            <div>
-            Search for recipes: 
-            </div>
+            <div>Ingredients to include (Ex: chicken, rice):</div>
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </label>
+          <label>
+            <div>
+              Ingredients to exclude (Ex: beans, broccoli):
+            </div>
+            <input
+              type="text"
+              value={excludedQuery}
+              onChange={(e) => setExcludedQuery(e.target.value)}
+              />
+          </label>
+          <div>
+              Run search 
+          </div>
+          <div>
           <button type="submit">Search</button>
+          </div>
         </form>
       </section>
 
