@@ -1,24 +1,41 @@
 import Head from 'next/head';
+import { useState } from 'react';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import {  getSortedPostsData  } from '../lib/posts';
+import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
-
-//To run, navigate to \nextjs-blog and type in terminal "npm run dev"
-//Live version at: https://nextjs-blog-kyle-greenes-projects.vercel.app/
+import { fetchRecipes } from '../lib/api';
 
 export async function getStaticProps() {
+  // Fetch recipes data with default search query
+  const recipesData = await fetchRecipes("chicken", "");
+
+  // Fetch blog posts data (existing code)
   const allPostsData = getSortedPostsData();
+
   return {
     props: {
+      recipesData,
       allPostsData,
     },
   };
 }
 
+export default function Home({ allPostsData }) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchedRecipes, setSearchedRecipes] = useState(null); // State to store search results
 
-export default function Home({  allPostsData  }) {
+  const handleSearch = async (event) => {
+    event.preventDefault();
+
+    // Fetch recipes data with the user-entered search query
+    const recipesData = await fetchRecipes(searchQuery, "");
+
+    // Update the state with the new search results
+    setSearchedRecipes(recipesData);
+  };
+
   return (
     <Layout home>
       <Head>
@@ -26,25 +43,61 @@ export default function Home({  allPostsData  }) {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>Hi, here is my site!</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+        <p>Here you can search for new recipes!</p>
+
+        {/* Search Form */}
+        <form onSubmit={handleSearch}>
+          <label>
+            <div>
+            Search for recipes: 
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </label>
+          <button type="submit">Search</button>
+        </form>
       </section>
+
+      {/* Display Recipes */}
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Recipes</h2>
+        <ul className={utilStyles.list}>
+          {searchedRecipes &&
+            searchedRecipes.hits.map(({ recipe }, index) => (
+              <li className={utilStyles.listItem} key={index}>
+                <a href={recipe.url} target="_blank" rel="noopener noreferrer">
+                  {recipe.label}
+                </a>
+                <br />
+                <small className={utilStyles.lightText}>
+                  Ingredients:
+                  {recipe.ingredientLines.map((ingredient, i) => (
+                    <div key={i}>{ingredient}</div>
+                  ))}
+                </small>
+              </li>
+            ))}
+        </ul>
+      </section>
+
+      {/* Display Blog Posts
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
           {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-            <Link href={`/posts/${id}`}>{title}</Link>
-            <br />
-            <small className={utilStyles.lightText}>
-              <Date dateString={date} />
-            </small>
+              <Link href={`/posts/${id}`}>{title}</Link>
+              <br />
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
-      </section>
+      </section> */}
     </Layout>
   );
 }
