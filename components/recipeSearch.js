@@ -5,11 +5,11 @@ import { fetchRecipes } from '../lib/api';
 export default function RecipePage() {
   useEffect(() => {
     async function fetchData() {
-      const formattedString = "chicken";
+      const formattedString = "";
       const excludedIngredientsStr = "";
 
       try {
-        const recipesData = await fetchRecipes(formattedString, excludedIngredientsStr);
+        const recipesData = await fetchRecipes(formattedString, excludedIngredientsStr, numRecipes);
 
         if (recipesData) {
           // Process the retrieved data as needed

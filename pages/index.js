@@ -9,7 +9,7 @@ import { fetchRecipes } from '../lib/api';
 
 export async function getStaticProps() {
   // Fetch recipes data with default search query
-  const recipesData = await fetchRecipes("chicken", "");
+  const recipesData = await fetchRecipes("", "");
 
   // Fetch blog posts data (existing code)
   const allPostsData = getSortedPostsData();
@@ -25,6 +25,7 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [excludedQuery, setExcludedQuery] = useState("");
+  const [numRecipes, setNumRecipes] = useState(10);
   const [searchedRecipes, setSearchedRecipes] = useState(null); // State to store search results
 
   const handleSearch = async (event) => {
