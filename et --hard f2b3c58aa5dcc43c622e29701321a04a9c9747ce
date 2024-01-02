@@ -1,0 +1,32 @@
+[33mcommit f2838da8bb7306c5f2205228ebf76845e4208b7b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Kyle Greene <kmgreene@gmail.com>
+Date:   Tue Jan 2 07:39:28 2024 -0800
+
+    Changed name of site
+
+[33mcommit f2b3c58aa5dcc43c622e29701321a04a9c9747ce[m
+Merge: 0009bcd 90db51c
+Author: Kyle Greene <91363144+Civenge@users.noreply.github.com>
+Date:   Mon Jan 1 12:01:42 2024 -0800
+
+    Merge pull request #1 from Civenge/test-branch
+    
+    Update live website URL
+
+[33mcommit 90db51c86c9c664028da373876766a45c8719119[m[33m ([m[1;31morigin/test-branch[m[33m)[m
+Author: Kyle Greene <kmgreene@gmail.com>
+Date:   Mon Jan 1 11:59:41 2024 -0800
+
+    Update live website URL
+
+[33mcommit 0009bcd0bc9f212d1872f11931059c2f4f351664[m
+Author: Kyle Greene <kmgreene@gmail.com>
+Date:   Mon Jan 1 11:41:25 2024 -0800
+
+    Example code
+
+[33mcommit b4d6fb5617a0ef12965a7d6aff4d7ac43a7f9ad5[m
+Author: Kyle Greene <kmgreene@gmail.com>
+Date:   Wed Dec 27 15:59:34 2023 -0800
+
+    Initial commit from Create Next App
