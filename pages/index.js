@@ -25,6 +25,7 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [excludedQuery, setExcludedQuery] = useState("");
+  const [numRecipes, setNumRecipes] = useState(10);
   const [searchedRecipes, setSearchedRecipes] = useState(null); // State to store search results
 
   const handleSearch = async (event) => {
