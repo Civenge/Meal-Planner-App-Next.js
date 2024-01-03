@@ -95,6 +95,105 @@ export default function Home({ allPostsData }) {
                 />
                 American
             </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Asian"
+                checked={selectedCuisineTypes.includes("Asian")}
+                onChange={() => handleCuisineTypeChange("Asian")}
+                />
+                Asian
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="British"
+                checked={selectedCuisineTypes.includes("British")}
+                onChange={() => handleCuisineTypeChange("British")}
+                />
+                British
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Caribbean"
+                checked={selectedCuisineTypes.includes("Caribbean")}
+                onChange={() => handleCuisineTypeChange("Caribbean")}
+                />
+                Caribbean
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Chinese"
+                checked={selectedCuisineTypes.includes("Chinese")}
+                onChange={() => handleCuisineTypeChange("Chinese")}
+                />
+                Chinese
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="French"
+                checked={selectedCuisineTypes.includes("French")}
+                onChange={() => handleCuisineTypeChange("French")}
+                />
+                French
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Indian"
+                checked={selectedCuisineTypes.includes("Indian")}
+                onChange={() => handleCuisineTypeChange("Indian")}
+                />
+                Indian
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Italian"
+                checked={selectedCuisineTypes.includes("Italian")}
+                onChange={() => handleCuisineTypeChange("Italian")}
+                />
+                Italian
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Japanese"
+                checked={selectedCuisineTypes.includes("Japanese")}
+                onChange={() => handleCuisineTypeChange("Japanese")}
+                />
+                Japanese
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Kosher"
+                checked={selectedCuisineTypes.includes("Kosher")}
+                onChange={() => handleCuisineTypeChange("Kosher")}
+                />
+                Kosher
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Mediterranean"
+                checked={selectedCuisineTypes.includes("Mediterranean")}
+                onChange={() => handleCuisineTypeChange("Mediterranean")}
+                />
+                Mediterranean
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                value="Middle Eastern"
+                checked={selectedCuisineTypes.includes("Middle Eastern")}
+                onChange={() => handleCuisineTypeChange("Middle Eastern")}
+                />
+                Middle Eastern
+            </label>
           </div>
           <div>
               Run search 
