@@ -25,17 +25,34 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [excludedQuery, setExcludedQuery] = useState("");
-  const [numRecipes, setNumRecipes] = useState(10);
+  const [selectedCuisineTypes, setSelectedCuisineTypes] = useState([]);
   const [searchedRecipes, setSearchedRecipes] = useState(null); // State to store search results
 
   const handleSearch = async (event) => {
     event.preventDefault();
 
+    // Convert selectedCuisineTypes array to a comma-separated string
+    const cuisineTypeStr = selectedCuisineTypes.join(',');
+
     // Fetch recipes data with the user-entered search query
-    const recipesData = await fetchRecipes(searchQuery, excludedQuery);
+    const recipesData = await fetchRecipes(searchQuery, excludedQuery, cuisineTypeStr);
 
     // Update the state with the new search results
     setSearchedRecipes(recipesData);
+  };
+
+  const handleCuisineTypeChange = (cuisineType) => {
+    setSelectedCuisineTypes((prevSelectedCuisineTypes) => {
+      const updatedCuisineTypes = new Set(prevSelectedCuisineTypes);
+  
+      if (updatedCuisineTypes.has(cuisineType)) {
+        updatedCuisineTypes.delete(cuisineType);
+      } else {
+        updatedCuisineTypes.add(cuisineType);
+      }
+  
+      return Array.from(updatedCuisineTypes);  // Convert the set back to an array
+    });
   };
 
   return (
@@ -67,6 +84,18 @@ export default function Home({ allPostsData }) {
               onChange={(e) => setExcludedQuery(e.target.value)}
               />
           </label>
+          <div>
+            Cuisine Types:
+            <label>
+              <input
+                type="checkbox"
+                value="American"
+                checked={selectedCuisineTypes.includes("American")}
+                onChange={() => handleCuisineTypeChange("American")}
+                />
+                American
+            </label>
+          </div>
           <div>
               Run search 
           </div>
