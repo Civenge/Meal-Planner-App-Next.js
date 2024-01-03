@@ -85,7 +85,7 @@ export default function Home({ allPostsData }) {
               />
           </label>
           <div className={utilStyles.runSearchSection}>
-            <div>Cuisine Types:</div>
+            <h2 className={utilStyles.headingLg}>Cuisine Types:</h2>
             <label>
               <input
                 type="checkbox"
@@ -205,7 +205,9 @@ export default function Home({ allPostsData }) {
             </label>
           </div>
           <div className={utilStyles.runSearchSection}>
+            <h2 className={utilStyles.headingLg}>
               Run search:
+            </h2>
           </div>
           <div>
           <button type="submit">Search</button>
@@ -215,7 +217,7 @@ export default function Home({ allPostsData }) {
 
       {/* Display Recipes */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Recipes</h2>
+        <h2 className={utilStyles.headingLg}>Recipes:</h2>
         <ul className={utilStyles.list}>
           {searchedRecipes &&
             searchedRecipes.hits.map(({ recipe }, index) => (
