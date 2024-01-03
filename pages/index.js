@@ -61,8 +61,8 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={`${utilStyles.headingMd} cuisineTypesSection`}>
-        <p>Welcome to the Meal Planner App!</p>
-        <p>Here you can search for new recipes.</p>
+        <h1 className={utilStyles.headingLg}>Welcome to the Meal Planner App!</h1>
+        <p>Here you can search for new recipes based upon your favorite ingredients to include, ingredients you want to exclude, and by one or more of your favorite cuisine types.</p>
 
         {/* Search Form */}
         <form onSubmit={handleSearch}>
