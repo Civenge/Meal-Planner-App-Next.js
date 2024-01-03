@@ -85,7 +85,7 @@ export default function Home({ allPostsData }) {
               />
           </label>
           <div>
-            Cuisine Types:
+            <div>Cuisine Types:</div>
             <label>
               <input
                 type="checkbox"
