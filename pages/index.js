@@ -60,7 +60,7 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <section className={`${utilStyles.headingMd} cuisineTypesSection`}>
         <p>Welcome to the Meal Planner App!</p>
         <p>Here you can search for new recipes.</p>
 
@@ -84,7 +84,7 @@ export default function Home({ allPostsData }) {
               onChange={(e) => setExcludedQuery(e.target.value)}
               />
           </label>
-          <div>
+          <div className={utilStyles.runSearchSection}>
             <div>Cuisine Types:</div>
             <label>
               <input
@@ -188,6 +188,15 @@ export default function Home({ allPostsData }) {
             <label>
               <input
                 type="checkbox"
+                value="Mexican"
+                checked={selectedCuisineTypes.includes("Mexican")}
+                onChange={() => handleCuisineTypeChange("Mexican")}
+                />
+                Mexican
+            </label>
+            <label>
+              <input
+                type="checkbox"
                 value="Middle Eastern"
                 checked={selectedCuisineTypes.includes("Middle Eastern")}
                 onChange={() => handleCuisineTypeChange("Middle Eastern")}
@@ -195,8 +204,8 @@ export default function Home({ allPostsData }) {
                 Middle Eastern
             </label>
           </div>
-          <div>
-              Run search 
+          <div className={utilStyles.runSearchSection}>
+              Run search:
           </div>
           <div>
           <button type="submit">Search</button>
