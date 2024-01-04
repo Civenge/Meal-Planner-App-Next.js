@@ -92,7 +92,7 @@ export default function Home({ allPostsData }) {
               />
           </label>
           
-          <div className={utilStyles.runSearchSection}>
+          {/* <div className={utilStyles.runSearchSection}>
             <h2 className={utilStyles.headingLg}>
               Cuisine Types
               <span
@@ -110,21 +110,19 @@ export default function Home({ allPostsData }) {
                 handleCuisineTypeChange={handleCuisineTypeChange}
               />
             )}
-          </div>
-          {/* <div className={utilStyles.runSearchSection}>
-            <div className={utilStyles.flexContainer}>
-              <h2 className={utilStyles.headingLg}>Cuisine Types</h2>
-              <button className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
-                {showCheckboxes ? "Hide Checkboxes" : "Show Checkboxes"}
-              </button>
-            </div>
+          </div> */}
+          <div className={utilStyles.runSearchSection}>
+            <h2 className={utilStyles.headingLg}>Cuisine Types</h2>
+            <button className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
+              {showCheckboxes ? "Hide" : "Show"}
+            </button>
             {showCheckboxes && (
               <CuisineCheckboxes
                 selectedCuisineTypes={selectedCuisineTypes}
                 handleCuisineTypeChange={handleCuisineTypeChange}
               />
             )}
-          </div> */}
+          </div>
 
           <div>
           <button type="submit">Search</button>
