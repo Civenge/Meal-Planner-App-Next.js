@@ -56,6 +56,12 @@ export default function Home({ allPostsData }) {
     });
   };
 
+  const [showCheckboxes, setShowCheckboxes] = useState(false);
+
+  const toggleCheckboxes = () => {
+    setShowCheckboxes((prevShowCheckboxes) => !prevShowCheckboxes);
+  };
+
   return (
     <Layout home>
       <Head>
@@ -86,16 +92,40 @@ export default function Home({ allPostsData }) {
               />
           </label>
           
-          <CuisineCheckboxes
-            selectedCuisineTypes={selectedCuisineTypes}
-            handleCuisineTypeChange={handleCuisineTypeChange}
-          />
-          
           <div className={utilStyles.runSearchSection}>
             <h2 className={utilStyles.headingLg}>
-              Run search:
+              Cuisine Types
+              <span
+                className={`${utilStyles.toggleIcon} ${showCheckboxes ? utilStyles.minusIcon : utilStyles.plusIcon}`}
+                onClick={toggleCheckboxes}
+              >
+                <span className={utilStyles.collapseExpandText}>
+                  {showCheckboxes ? " (Collapse List)" : " (Expand List)"}
+                </span>
+              </span>
             </h2>
+            {showCheckboxes && (
+              <CuisineCheckboxes
+                selectedCuisineTypes={selectedCuisineTypes}
+                handleCuisineTypeChange={handleCuisineTypeChange}
+              />
+            )}
           </div>
+          {/* <div className={utilStyles.runSearchSection}>
+            <div className={utilStyles.flexContainer}>
+              <h2 className={utilStyles.headingLg}>Cuisine Types</h2>
+              <button className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
+                {showCheckboxes ? "Hide Checkboxes" : "Show Checkboxes"}
+              </button>
+            </div>
+            {showCheckboxes && (
+              <CuisineCheckboxes
+                selectedCuisineTypes={selectedCuisineTypes}
+                handleCuisineTypeChange={handleCuisineTypeChange}
+              />
+            )}
+          </div> */}
+
           <div>
           <button type="submit">Search</button>
           </div>

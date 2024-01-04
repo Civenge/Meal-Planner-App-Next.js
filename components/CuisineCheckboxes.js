@@ -22,7 +22,7 @@ const CuisineCheckboxes = ({ selectedCuisineTypes, handleCuisineTypeChange }) =>
 
   return (
     <div className={utilStyles.runSearchSection}>
-      <h2 className={utilStyles.headingLg}>Cuisine Types:</h2>
+      
       {cuisines.map((cuisine) => (
         <CuisineCheckbox
           key={cuisine}
