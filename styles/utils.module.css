@@ -56,6 +56,11 @@
     margin-top: 10px;
 }
 
+.cuisineCheckboxContainer {
+    margin-right: 8px;
+    display: inline-block;
+}
+
 .runSearchSection {
     margin-bottom: 10px;
     margin-top: 10px;
