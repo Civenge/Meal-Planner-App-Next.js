@@ -92,25 +92,6 @@ export default function Home({ allPostsData }) {
               />
           </label>
           
-          {/* <div className={utilStyles.runSearchSection}>
-            <h2 className={utilStyles.headingLg}>
-              Cuisine Types
-              <span
-                className={`${utilStyles.toggleIcon} ${showCheckboxes ? utilStyles.minusIcon : utilStyles.plusIcon}`}
-                onClick={toggleCheckboxes}
-              >
-                <span className={utilStyles.collapseExpandText}>
-                  {showCheckboxes ? " (Collapse List)" : " (Expand List)"}
-                </span>
-              </span>
-            </h2>
-            {showCheckboxes && (
-              <CuisineCheckboxes
-                selectedCuisineTypes={selectedCuisineTypes}
-                handleCuisineTypeChange={handleCuisineTypeChange}
-              />
-            )}
-          </div> */}
           <div className={utilStyles.runSearchSection}>
             <h2 className={utilStyles.headingLg}>Cuisine Types</h2>
             <button className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
