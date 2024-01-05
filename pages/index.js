@@ -94,7 +94,7 @@ export default function Home({ allPostsData }) {
           
           <div className={utilStyles.runSearchSection}>
             <h2 className={utilStyles.headingLg}>Cuisine Types</h2>
-            <button className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
+            <button type="button" className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
               {showCheckboxes ? "Hide" : "Show"}
             </button>
             {showCheckboxes && (
