@@ -157,7 +157,7 @@ export default function Home({ allPostsData }) {
 
       {/* Display Recipes */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Recipes:</h2>
+        <h2 className={utilStyles.headingLg}>Search Results</h2>
         <ul className={utilStyles.list}>
           {searchedRecipes &&
             searchedRecipes.hits.map(({ recipe }, index) => (
