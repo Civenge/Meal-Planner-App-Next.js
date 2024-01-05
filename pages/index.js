@@ -7,6 +7,14 @@ import Link from 'next/link';
 import Date from '../components/date';
 import { fetchRecipes } from '../lib/api';
 import CuisineCheckboxes from '../components/CuisineCheckboxes';
+import MealTypeCheckboxes from '../components/MealTypeCheckboxes';
+
+// things to add:
+// diet [some categories tbd]
+// health [some categories tbd]
+// mealType [breakfast, lunch, dinner, snack] What is teatime?
+// dishType [some categories tbd]
+// time [probably just max]
 
 export async function getStaticProps() {
   // Fetch recipes data with default search query
@@ -26,7 +34,10 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [excludedQuery, setExcludedQuery] = useState("");
-  const [selectedCuisineTypes, setSelectedCuisineTypes] = useState([]);
+  const [selectedCuisineTypes, setSelectedCuisineTypes] = useState([]); // Define the state
+  const [selectedMealTypes, setSelectedMealTypes] = useState([]);
+  const [showCuisineCheckboxes, setShowCuisineCheckboxes] = useState(false);
+  const [showMealCheckboxes, setShowMealCheckboxes] = useState(false);
   const [searchedRecipes, setSearchedRecipes] = useState(null); // State to store search results
 
   const handleSearch = async (event) => {
@@ -35,8 +46,11 @@ export default function Home({ allPostsData }) {
     // Convert selectedCuisineTypes array to a comma-separated string
     const cuisineTypeStr = selectedCuisineTypes.join(',');
 
+    // Convert selectedCuisineTypes array to a comma-separated string
+    const mealTypeStr = selectedMealTypes.join(',');
+
     // Fetch recipes data with the user-entered search query
-    const recipesData = await fetchRecipes(searchQuery, excludedQuery, cuisineTypeStr);
+    const recipesData = await fetchRecipes(searchQuery, excludedQuery, cuisineTypeStr, mealTypeStr);
 
     // Update the state with the new search results
     setSearchedRecipes(recipesData);
@@ -56,10 +70,26 @@ export default function Home({ allPostsData }) {
     });
   };
 
-  const [showCheckboxes, setShowCheckboxes] = useState(false);
+  const handleMealTypeChange = (mealType) => {
+    setSelectedMealTypes((prevSelectedMealTypes) => {
+      const updatedMealTypes = new Set(prevSelectedMealTypes);
+  
+      if (updatedMealTypes.has(mealType)) {
+        updatedMealTypes.delete(mealType);
+      } else {
+        updatedMealTypes.add(mealType);
+      }
+  
+      return Array.from(updatedMealTypes);  // Convert the set back to an array
+    });
+  };
 
-  const toggleCheckboxes = () => {
-    setShowCheckboxes((prevShowCheckboxes) => !prevShowCheckboxes);
+  const toggleCuisineCheckboxes = () => {
+    setShowCuisineCheckboxes((prevShowCuisineCheckboxes) => !prevShowCuisineCheckboxes);
+  };
+
+  const toggleMealCheckboxes = () => {
+    setShowMealCheckboxes((prevShowMealCheckboxes) => !prevShowMealCheckboxes);
   };
 
   return (
@@ -91,16 +121,30 @@ export default function Home({ allPostsData }) {
               onChange={(e) => setExcludedQuery(e.target.value)}
               />
           </label>
-          
+          {/* Cuisine Types */}
           <div className={utilStyles.runSearchSection}>
             <h2 className={utilStyles.headingLg}>Cuisine Types</h2>
-            <button type="button" className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
-              {showCheckboxes ? "Hide" : "Show"}
+            <button type="button" className={utilStyles.toggleButton} onClick={toggleCuisineCheckboxes}>
+              {showCuisineCheckboxes ? "Hide" : "Show"}
             </button>
-            {showCheckboxes && (
+            {showCuisineCheckboxes && (
               <CuisineCheckboxes
                 selectedCuisineTypes={selectedCuisineTypes}
                 handleCuisineTypeChange={handleCuisineTypeChange}
+              />
+            )}
+          </div>
+          
+          {/* Meal Types */}
+          <div className={utilStyles.runSearchSection}>
+            <h2 className={utilStyles.headingLg}>Meal Types</h2>
+            <button type="button" className={utilStyles.toggleButton} onClick={toggleMealCheckboxes}>
+              {showMealCheckboxes ? "Hide" : "Show"}
+            </button>
+            {showMealCheckboxes && (
+              <MealTypeCheckboxes
+                selectedMealTypes={selectedMealTypes}
+                handleMealTypeChange={handleMealTypeChange}
               />
             )}
           </div>
