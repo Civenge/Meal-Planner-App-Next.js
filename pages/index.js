@@ -6,6 +6,7 @@ import { getSortedPostsData } from '../lib/posts';
 import Link from 'next/link';
 import Date from '../components/date';
 import { fetchRecipes } from '../lib/api';
+import CuisineCheckboxes from '../components/CuisineCheckboxes';
 
 export async function getStaticProps() {
   // Fetch recipes data with default search query
@@ -55,6 +56,12 @@ export default function Home({ allPostsData }) {
     });
   };
 
+  const [showCheckboxes, setShowCheckboxes] = useState(false);
+
+  const toggleCheckboxes = () => {
+    setShowCheckboxes((prevShowCheckboxes) => !prevShowCheckboxes);
+  };
+
   return (
     <Layout home>
       <Head>
@@ -84,158 +91,20 @@ export default function Home({ allPostsData }) {
               onChange={(e) => setExcludedQuery(e.target.value)}
               />
           </label>
+          
           <div className={utilStyles.runSearchSection}>
-            <h2 className={utilStyles.headingLg}>Cuisine Types:</h2>
+            <h2 className={utilStyles.headingLg}>Cuisine Types</h2>
+            <button className={utilStyles.toggleButton} onClick={toggleCheckboxes}>
+              {showCheckboxes ? "Hide" : "Show"}
+            </button>
+            {showCheckboxes && (
+              <CuisineCheckboxes
+                selectedCuisineTypes={selectedCuisineTypes}
+                handleCuisineTypeChange={handleCuisineTypeChange}
+              />
+            )}
+          </div>
 
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="American"
-                  checked={selectedCuisineTypes.includes("American")}
-                  onChange={() => handleCuisineTypeChange("American")}
-                />
-                American
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Asian"
-                  checked={selectedCuisineTypes.includes("Asian")}
-                  onChange={() => handleCuisineTypeChange("Asian")}
-                />
-                Asian
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="British"
-                  checked={selectedCuisineTypes.includes("British")}
-                  onChange={() => handleCuisineTypeChange("British")}
-                />
-                British
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Caribbean"
-                  checked={selectedCuisineTypes.includes("Caribbean")}
-                  onChange={() => handleCuisineTypeChange("Caribbean")}
-                />
-                Caribbean
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Chinese"
-                  checked={selectedCuisineTypes.includes("Chinese")}
-                  onChange={() => handleCuisineTypeChange("Chinese")}
-                />
-                Chinese
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="French"
-                  checked={selectedCuisineTypes.includes("French")}
-                  onChange={() => handleCuisineTypeChange("French")}
-                />
-                French
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Indian"
-                  checked={selectedCuisineTypes.includes("Indian")}
-                  onChange={() => handleCuisineTypeChange("Indian")}
-                />
-                Indian
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Italian"
-                  checked={selectedCuisineTypes.includes("Italian")}
-                  onChange={() => handleCuisineTypeChange("Italian")}
-                />
-                Italian
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Japanese"
-                  checked={selectedCuisineTypes.includes("Japanese")}
-                  onChange={() => handleCuisineTypeChange("Japanese")}
-                />
-                Japanese
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Kosher"
-                  checked={selectedCuisineTypes.includes("Kosher")}
-                  onChange={() => handleCuisineTypeChange("Kosher")}
-                />
-                Kosher
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Mediterranean"
-                  checked={selectedCuisineTypes.includes("Mediterranean")}
-                  onChange={() => handleCuisineTypeChange("Mediterranean")}
-                />
-                Mediterranean
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Mexican"
-                  checked={selectedCuisineTypes.includes("Mexican")}
-                  onChange={() => handleCuisineTypeChange("Mexican")}
-                />
-                Mexican
-              </label>
-            </div>
-            <div className={utilStyles.cuisineCheckboxContainer}>
-              <label>
-                <input
-                  type="checkbox"
-                  value="Middle Eastern"
-                  checked={selectedCuisineTypes.includes("Middle Eastern")}
-                  onChange={() => handleCuisineTypeChange("Middle Eastern")}
-                />
-                Middle Eastern
-              </label>
-            </div>
-          </div>
-          <div className={utilStyles.runSearchSection}>
-            <h2 className={utilStyles.headingLg}>
-              Run search:
-            </h2>
-          </div>
           <div>
           <button type="submit">Search</button>
           </div>
