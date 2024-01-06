@@ -8,6 +8,7 @@ import Date from '../components/date';
 import { fetchRecipes } from '../lib/api';
 import CuisineCheckboxes from '../components/CuisineCheckboxes';
 import MealTypeCheckboxes from '../components/MealTypeCheckboxes';
+import PrepTimeCheckboxes from '../components/PrepTimeCheckboxes';
 
 // things to add:
 // diet [some categories tbd]
@@ -36,8 +37,10 @@ export default function Home({ allPostsData }) {
   const [excludedQuery, setExcludedQuery] = useState("");
   const [selectedCuisineTypes, setSelectedCuisineTypes] = useState([]); // Define the state
   const [selectedMealTypes, setSelectedMealTypes] = useState([]);
+  const [selectedPrepTimeTypes, setSelectedPrepTimeTypes] = useState([]);
   const [showCuisineCheckboxes, setShowCuisineCheckboxes] = useState(false);
   const [showMealCheckboxes, setShowMealCheckboxes] = useState(false);
+  const [showPrepTimeCheckboxes, setShowPrepTimeCheckboxes] = useState(false);
   const [searchedRecipes, setSearchedRecipes] = useState(null); // State to store search results
 
   const handleSearch = async (event) => {
@@ -49,8 +52,11 @@ export default function Home({ allPostsData }) {
     // Convert selectedCuisineTypes array to a comma-separated string
     const mealTypeStr = selectedMealTypes.join(',');
 
+    // Convert selectedCuisineTypes array to a comma-separated string
+    const prepTimeStr = selectedPrepTimeTypes.join(',');
+
     // Fetch recipes data with the user-entered search query
-    const recipesData = await fetchRecipes(searchQuery, excludedQuery, cuisineTypeStr, mealTypeStr);
+    const recipesData = await fetchRecipes(searchQuery, excludedQuery, cuisineTypeStr, mealTypeStr, prepTimeStr);
 
     // Update the state with the new search results
     setSearchedRecipes(recipesData);
@@ -84,6 +90,20 @@ export default function Home({ allPostsData }) {
     });
   };
 
+  const handlePrepTypeChange = (prepTimes) => {
+    setSelectedPrepTimeTypes((prevSelectedPrepTimeTypes) => {
+      const updatedPrepTimeTypes = new Set(prevSelectedPrepTimeTypes);
+  
+      if (updatedPrepTimeTypes.has(prepTimes)) {
+        updatedPrepTimeTypes.delete(prepTimes);
+      } else {
+        updatedPrepTimeTypes.add(prepTimes);
+      }
+  
+      return Array.from(updatedPrepTimeTypes);  // Convert the set back to an array
+    });
+  };
+
   const toggleCuisineCheckboxes = () => {
     setShowCuisineCheckboxes((prevShowCuisineCheckboxes) => !prevShowCuisineCheckboxes);
   };
@@ -92,6 +112,10 @@ export default function Home({ allPostsData }) {
     setShowMealCheckboxes((prevShowMealCheckboxes) => !prevShowMealCheckboxes);
   };
 
+  const togglePrepTimeCheckboxes = () => {
+    setShowPrepTimeCheckboxes((prevShowPrepTimeCheckboxes) => !prevShowPrepTimeCheckboxes);
+  };
+ 
   return (
     <Layout home>
       <Head>
@@ -145,6 +169,20 @@ export default function Home({ allPostsData }) {
               <MealTypeCheckboxes
                 selectedMealTypes={selectedMealTypes}
                 handleMealTypeChange={handleMealTypeChange}
+              />
+            )}
+          </div>
+
+          {/* Prep Time Limit */}
+          <div className={utilStyles.runSearchSection}>
+            <h2 className={utilStyles.headingLg}>Meal Prep Time (Maximum in minutes)</h2>
+            <button type="button" className={utilStyles.toggleButton} onClick={togglePrepTimeCheckboxes}>
+              {showPrepTimeCheckboxes ? "Hide" : "Show"}
+            </button>
+            {showPrepTimeCheckboxes && (
+              <PrepTimeCheckboxes
+                selectedPrepTimeTypes={selectedPrepTimeTypes}  // Correct the prop name here
+                handlePrepTypeChange={handlePrepTypeChange}
               />
             )}
           </div>
