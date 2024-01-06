@@ -105,7 +105,7 @@
     background: var(--button-background-hover);
 }
 
-.toggleButton-search {
+.toggleButtonSearch {
     --button-color: #ffffff;
     --button-background: #3ebe53;
     --button-background-hover: #32b348;

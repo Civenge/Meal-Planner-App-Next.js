@@ -151,8 +151,8 @@ export default function Home({ allPostsData }) {
 
           <div>
           {/* <button type="submit">Search</button> */}
-          <button className='button' type='submit'>
-            <span className="material-symbols-outlined">search</span>
+          <button className={`${utilStyles.toggleButton} ${utilStyles.toggleButtonSearch}`} type='submit'>
+            <span className="material-symbols-outlined">Search</span>
             <span>Search</span>
           </button>
           </div>
