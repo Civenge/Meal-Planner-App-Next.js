@@ -13,9 +13,7 @@ import PrepTimeCheckboxes from '../components/PrepTimeCheckboxes';
 // things to add:
 // diet [some categories tbd]
 // health [some categories tbd]
-// mealType [breakfast, lunch, dinner, snack] What is teatime?
 // dishType [some categories tbd]
-// time [probably just max]
 
 export async function getStaticProps() {
   // Fetch recipes data with default search query
@@ -53,7 +51,7 @@ export default function Home({ allPostsData }) {
     const mealTypeStr = selectedMealTypes.join(',');
 
     // Convert selectedCuisineTypes array to a comma-separated string
-    const prepTimeStr = selectedPrepTimeTypes.join(',');
+    const prepTimeStr = selectedPrepTimeTypes
 
     // Fetch recipes data with the user-entered search query
     const recipesData = await fetchRecipes(searchQuery, excludedQuery, cuisineTypeStr, mealTypeStr, prepTimeStr);
@@ -90,18 +88,8 @@ export default function Home({ allPostsData }) {
     });
   };
 
-  const handlePrepTypeChange = (prepTimes) => {
-    setSelectedPrepTimeTypes((prevSelectedPrepTimeTypes) => {
-      const updatedPrepTimeTypes = new Set(prevSelectedPrepTimeTypes);
-  
-      if (updatedPrepTimeTypes.has(prepTimes)) {
-        updatedPrepTimeTypes.delete(prepTimes);
-      } else {
-        updatedPrepTimeTypes.add(prepTimes);
-      }
-  
-      return Array.from(updatedPrepTimeTypes);  // Convert the set back to an array
-    });
+  const handlePrepTypeChange = (prepTime) => {
+    setSelectedPrepTimeTypes(prepTime);
   };
 
   const toggleCuisineCheckboxes = () => {

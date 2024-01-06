@@ -9,6 +9,7 @@ const PrepTimeCheckboxes = ({ selectedPrepTimeTypes, handlePrepTypeChange }) => 
     "30",
     "45",
     "60",
+    "90",
   ];
 
   return (

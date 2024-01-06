@@ -7,7 +7,7 @@ const PrepTimeCheckbox = ({ value, checked, onChange }) => {
     <div className={utilStyles.cuisineCheckboxContainer}>
       <label>
         <input
-          type="checkbox"
+          type="radio"
           value={value}
           checked={checked}
           onChange={onChange}
