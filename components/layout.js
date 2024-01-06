@@ -14,7 +14,7 @@ export default function Layout({ children, home }) {
           <link rel="icon" href="/favicon.ico" />
           <meta
             name="description"
-            content="Learn how to build a personal website using Next.js"
+            content="Plan your meals and discover delicious recipes with our meal planner and recipe search app. Effortlessly organize your weekly menus and explore a wide variety of culinary delights."
           />
           <meta
             property="og:image"

@@ -69,15 +69,11 @@
 .flexContainer {
     display: flex;
     align-items: center;
-    /* Align items vertically centered */
 }
 
 .collapseExpandText {
     font-size: 14px;
-    /* Adjust the font size as needed */
     font-weight: normal;
-    /* Remove bold styling if not needed */
-    /* Add any other styling properties as necessary */
 }
 
 .toggleButton {
