@@ -110,3 +110,11 @@
     --button-background: #3ebe53;
     --button-background-hover: #32b348;
 }
+
+.boldLink {
+    font-weight: bold;
+}
+
+.nonBoldText {
+    font-weight: normal;
+}

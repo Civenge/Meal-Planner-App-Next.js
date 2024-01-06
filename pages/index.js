@@ -161,16 +161,20 @@ export default function Home({ allPostsData }) {
 
       {/* Display Recipes */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Search</h2>
+        <h2 className={utilStyles.headingLg}>Search Results</h2>
         <ul className={utilStyles.list}>
           {searchedRecipes &&
             searchedRecipes.hits.map(({ recipe }, index) => (
               <li className={utilStyles.listItem} key={index}>
-                <a href={recipe.url} target="_blank" rel="noopener noreferrer">
+                <a href={recipe.url} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={utilStyles.boldLink}
+                >
                   {recipe.label}
                 </a>
                 <br />
-                <small className={utilStyles.lightText}>
+                <small className={`${utilStyles.lightText} ${utilStyles.nonBoldText}`}>
                   Ingredients:
                   {recipe.ingredientLines.map((ingredient, i) => (
                     <div key={i}>{ingredient}</div>
