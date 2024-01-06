@@ -150,14 +150,18 @@ export default function Home({ allPostsData }) {
           </div>
 
           <div>
-          <button type="submit">Search</button>
+          {/* <button type="submit">Search</button> */}
+          <button className='button' type='submit'>
+            <span className="material-symbols-outlined">search</span>
+            <span>Search</span>
+          </button>
           </div>
         </form>
       </section>
 
       {/* Display Recipes */}
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Search Results</h2>
+        <h2 className={utilStyles.headingLg}>Search</h2>
         <ul className={utilStyles.list}>
           {searchedRecipes &&
             searchedRecipes.hits.map(({ recipe }, index) => (
