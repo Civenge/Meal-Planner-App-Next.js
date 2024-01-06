@@ -79,3 +79,34 @@
     /* Remove bold styling if not needed */
     /* Add any other styling properties as necessary */
 }
+
+.toggleButton {
+    --button-color: #333333;
+    --button-background: #dddddd;
+    --button-background-hover: #cccccc;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--button-background);
+    color: var(--button-color);
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.toggleButton:hover,
+.toggleButton:active {
+    background: var(--button-background-hover);
+}
+
+.toggleButton-search {
+    --button-color: #ffffff;
+    --button-background: #3ebe53;
+    --button-background-hover: #32b348;
+}

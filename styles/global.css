@@ -25,3 +25,34 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.button {
+  --button-color: #333333;
+  --button-background: #dddddd;
+  --button-background-hover: #cccccc;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--button-background);
+  color: var(--button-color);
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:active {
+  background: var(--button-background-hover);
+}
+
+.button-search {
+  --button-color: #ffffff;
+  --button-background: #3ebe53;
+  --button-background-hover: #32b348;
+}
