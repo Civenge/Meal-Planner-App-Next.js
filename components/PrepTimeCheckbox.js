@@ -1,13 +1,13 @@
-// MealTypeCheckbox.js
+// PrepTimeCheckbox.js
 import React from 'react';
 import utilStyles from '../styles/utils.module.css';
 
-const MealTypeCheckbox = ({ value, checked, onChange }) => {
+const PrepTimeCheckbox = ({ value, checked, onChange }) => {
   return (
     <div className={utilStyles.cuisineCheckboxContainer}>
       <label>
         <input
-          type="checkbox"
+          type="radio"
           value={value}
           checked={checked}
           onChange={onChange}
@@ -18,4 +18,4 @@ const MealTypeCheckbox = ({ value, checked, onChange }) => {
   );
 };
 
-export default MealTypeCheckbox;
+export default PrepTimeCheckbox;
