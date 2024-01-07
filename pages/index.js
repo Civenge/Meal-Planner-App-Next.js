@@ -161,7 +161,7 @@ export default function Home({ allPostsData }) {
             )}
           </div>
 
-          {/* Prep Time Limit */}
+          {/* Meal Prep Time */}
           <div className={utilStyles.runSearchSection}>
             <h2 className={utilStyles.headingLg}>Meal Prep Time (Maximum in minutes)</h2>
             <button type="button" className={utilStyles.toggleButton} onClick={togglePrepTimeCheckboxes}>
@@ -176,7 +176,6 @@ export default function Home({ allPostsData }) {
           </div>
 
           <div>
-          {/* <button type="submit">Search</button> */}
           <button className={`${utilStyles.toggleButton} ${utilStyles.toggleButtonSearch}`} type='submit'>
             <span className="material-symbols-outlined">Search</span>
             <span>Search</span>
