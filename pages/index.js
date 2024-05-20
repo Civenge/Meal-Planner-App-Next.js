@@ -3,12 +3,10 @@ import { useState } from 'react';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
 import { getSortedPostsData } from '../lib/posts';
-import Link from 'next/link';
-import Date from '../components/date';
 import { fetchRecipes } from '../lib/api';
-import CuisineCheckboxes from '../components/CuisineCheckboxes';
-import MealTypeCheckboxes from '../components/MealTypeCheckboxes';
-import PrepTimeCheckboxes from '../components/PrepTimeCheckboxes';
+import CuisineCheckboxes from '../components/cuisineCheckboxes';
+import MealTypeCheckboxes from '../components/mealTypeCheckboxes';
+import PrepTimeCheckboxes from '../components/prepTimeCheckboxes';
 
 // things to add:
 // diet [some categories tbd]

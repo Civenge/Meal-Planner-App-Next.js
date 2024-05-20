@@ -1,6 +1,6 @@
 // CuisineCheckboxes.js
 import React from 'react';
-import CuisineCheckbox from './CuisineCheckbox';
+import CuisineCheckbox from './cuisineCheckbox';
 import utilStyles from '../styles/utils.module.css';
 
 const CuisineCheckboxes = ({ selectedCuisineTypes, handleCuisineTypeChange }) => {

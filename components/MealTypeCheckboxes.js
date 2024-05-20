@@ -1,6 +1,6 @@
 // MealTypeCheckboxes.js
 import React from 'react';
-import MealTypeCheckbox from './MealTypeCheckbox';
+import MealTypeCheckbox from './mealTypeCheckbox';
 import utilStyles from '../styles/utils.module.css';
 
 const MealTypeCheckboxes = ({ selectedMealTypes, handleMealTypeChange }) => {
