@@ -2,9 +2,6 @@ import Head from 'next/head';
 import { useState } from 'react';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-import { getSortedPostsData } from '../lib/posts';
-import Link from 'next/link';
-import Date from '../components/date';
 import { fetchRecipes } from '../lib/api';
 import CuisineCheckboxes from '../components/CuisineCheckboxes';
 import MealTypeCheckboxes from '../components/MealTypeCheckboxes';
@@ -19,13 +16,9 @@ export async function getStaticProps() {
   // Fetch recipes data with default search query
   const recipesData = await fetchRecipes("", "");
 
-  // Fetch blog posts data (existing code)
-  const allPostsData = getSortedPostsData();
-
   return {
     props: {
       recipesData,
-      allPostsData,
     },
   };
 }
@@ -209,22 +202,7 @@ export default function Home({ allPostsData }) {
             ))}
         </ul>
       </section>
-
-      {/* Display Blog Posts
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>{title}</Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section> */}
+      
     </Layout>
   );
 }
